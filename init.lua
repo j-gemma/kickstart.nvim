@@ -1,4 +1,20 @@
 --[[
+<<<<<<< HEAD
+=======
+
+What is Kickstart?
+
+  Kickstart.nvim is *not* a distribution.
+
+  Kickstart.nvim is a starting point for your own configuration.
+    The goal is that you can read every line of code, top-to-bottom, understand
+    what your configuration is doing, and modify it to suit your needs.
+
+    Once you've done that, you can start exploring, configuring and tinkering to
+    make Neovim your own! That might mean leaving Kickstart just the way it is for a while
+    or immediately breaking it into modular pieces. It's up to you!
+
+>>>>>>> e77eaa77d1db5bc62d38af56f2c90902696eba26
     If you don't know anything about Lua, I recommend taking some time to read through
     a guide. One possible example which will only take 10-15 minutes:
       - https://learnxinyminutes.com/docs/lua/
@@ -47,6 +63,7 @@ If you experience any errors while trying to install kickstart, run `:checkhealt
 I hope you enjoy your Neovim journey,
 - TJ
 --]]
+vim.env.PROFILE = vim.fn.system('powershell.exe -Command "[System.Environment]::GetEnvironmentVariable(\'PROFILE\')"'):gsub('\n', '')
 
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -55,7 +72,7 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
 -- Set to true if you have a Nerd Font installed and selected in the terminal
-vim.g.have_nerd_font = false
+vim.g.have_nerd_font = true
 
 -- [[ Setting options ]]
 -- See `:help vim.opt`
@@ -535,7 +552,21 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         -- gopls = {},
-        -- pyright = {},
+        pyright = {
+          cmd = { 'pyright-langserver', '--stdio' },
+          filetypes = { 'python' },
+          -- root_directory = {},
+          settings = {
+            python = {
+              analysis = {
+                autoSearchPaths = true,
+                diagnosticMode = 'openFilesOnly',
+                useLibraryCodeForTypes = true,
+              },
+            },
+          },
+          single_file_support = true,
+        },
         -- rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -544,7 +575,6 @@ require('lazy').setup({
         --
         -- But for many setups, the LSP (`tsserver`) will work just fine
         -- tsserver = {},
-        --
 
         lua_ls = {
           -- cmd = {...},
@@ -757,7 +787,11 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
+<<<<<<< HEAD
       vim.cmd.colorscheme 'quiet'
+=======
+      vim.cmd.colorscheme 'minicyan'
+>>>>>>> e77eaa77d1db5bc62d38af56f2c90902696eba26
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
@@ -790,7 +824,7 @@ require('lazy').setup({
       --  and try some other statusline plugin
       local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
-      statusline.setup { use_icons = vim.g.have_nerd_font }
+      statusline.setup { use_icons = true }
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
@@ -861,21 +895,22 @@ require('lazy').setup({
   ui = {
     -- If you are using a Nerd Font: set icons to an empty table which will use the
     -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-    icons = vim.g.have_nerd_font and {} or {
-      cmd = '⌘',
-      config = '🛠',
-      event = '📅',
-      ft = '📂',
-      init = '⚙',
-      keys = '🗝',
-      plugin = '🔌',
-      runtime = '💻',
-      require = '🌙',
-      source = '📄',
-      start = '🚀',
-      task = '📌',
-      lazy = '💤 ',
-    },
+    -- icons = vim.g.have_nerd_font and {} or {
+    --   cmd = '⌘',
+    --   config = '🛠',
+    --   event = '📅',
+    --   ft = '📂',
+    --   init = '⚙',
+    --   keys = '🗝',
+    --   plugin = '🔌',
+    --   runtime = '💻',
+    --   require = '🌙',
+    --   source = '📄',
+    --   start = '🚀',
+    --   task = '📌',
+    --   lazy = '💤 ',
+    -- },
+    icons = {},
   },
 })
 
