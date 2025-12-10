@@ -1,6 +1,4 @@
 --[[
-<<<<<<< HEAD
-=======
 
 What is Kickstart?
 
@@ -787,11 +785,7 @@ require('lazy').setup({
       -- Load the colorscheme here.
       -- Like many other themes, this one has different styles, and you could load
       -- any other, such as 'tokyonight-storm', 'tokyonight-moon', or 'tokyonight-day'.
-<<<<<<< HEAD
       vim.cmd.colorscheme 'quiet'
-=======
-      vim.cmd.colorscheme 'minicyan'
->>>>>>> e77eaa77d1db5bc62d38af56f2c90902696eba26
 
       -- You can configure highlights by doing something like:
       vim.cmd.hi 'Comment gui=none'
