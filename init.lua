@@ -71,6 +71,17 @@ vim.g.maplocalleader = ' '
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = true
 
+-- Detect filetype early and set NVIM_PROFILE
+vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+  pattern = '*.tex',
+  callback = function()
+    -- Only set if not already set
+    if vim.env.NVIM_PROFILE ~= 'pdf_latex_config' then
+      vim.env.NVIM_PROFILE = 'pdf_latex_config'
+    end
+  end,
+})
+
 -- [[ Setting options ]]
 require 'options'
 
