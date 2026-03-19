@@ -54,6 +54,8 @@ local plugins = {
   require 'kickstart.plugins.mini',
 
   require 'kickstart.plugins.treesitter',
+
+  require 'kickstart.plugins.latex',
 }
 
 vim.list_extend(plugins, extra_plugins)
