@@ -56,6 +56,8 @@ local plugins = {
   require 'kickstart.plugins.treesitter',
 
   require 'kickstart.plugins.latex',
+
+  require 'kickstart.plugins.render-markdown',
 }
 
 vim.list_extend(plugins, extra_plugins)

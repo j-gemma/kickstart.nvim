@@ -32,6 +32,20 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+vim.keymap.set('n', '<leader>r', function()
+  vim.cmd 'write'
+  local out = vim.fn.expand '%:r'
+  local is_windows = vim.loop.os_uname().sysname:find 'Windows' ~= nil
+
+  local run_cmd = is_windows and (out .. '.exe') or ('./' .. out)
+
+  vim.cmd('split | term g++ -std=c++2b *.cpp -o ' .. out .. ' && ' .. run_cmd)
+  vim.cmd 'startinsert'
+end, { desc = '[R]un C++ Project' })
+
+-- Alternative: If you like CTRL-V for paste, use CTRL-Q for Block Mode
+-- (This is the standard Windows-Vim workaround)
+vim.keymap.set('n', '<C-q>', '<C-v>', { desc = 'Visual Block Mode' })
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
