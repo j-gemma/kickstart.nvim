@@ -34,12 +34,12 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 
 vim.keymap.set('n', '<leader>r', function()
   vim.cmd 'write'
-  local out = vim.fn.expand '%:r'
   local is_windows = vim.loop.os_uname().sysname:find 'Windows' ~= nil
 
-  local run_cmd = is_windows and (out .. '.exe') or ('./' .. out)
+  local exe = 'main'
+  local run_cmd = is_windows and ('.\\build\\' .. exe .. '.exe') or ('./build/' .. exe)
 
-  vim.cmd('split | term g++ -std=c++2b *.cpp -o ' .. out .. ' && ' .. run_cmd)
+  vim.cmd('split | term cmake --build build && ' .. run_cmd)
   vim.cmd 'startinsert'
 end, { desc = '[R]un C++ Project' })
 
